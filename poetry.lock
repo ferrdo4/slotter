@@ -19,6 +19,14 @@ speedups = ["aiodns", "brotlipy", "cchardet"]
 
 [[package]]
 category = "main"
+description = "A Pythonic Helper for DBAPI-2.0 SQL Access"
+name = "antiorm"
+optional = false
+python-versions = "*"
+version = "1.2.1"
+
+[[package]]
+category = "main"
 description = "Timeout context manager for asyncio programs"
 name = "async-timeout"
 optional = false
@@ -79,6 +87,17 @@ ezenv = ">=0.91"
 [package.extras]
 webcolors = ["webcolors"]
 win_terminfo = ["jinxed"]
+
+[[package]]
+category = "main"
+description = "Databases for Humans"
+name = "db"
+optional = false
+python-versions = "*"
+version = "0.1.1"
+
+[package.dependencies]
+antiorm = "*"
 
 [[package]]
 category = "main"
@@ -226,7 +245,7 @@ idna = ">=2.0"
 multidict = ">=4.0"
 
 [metadata]
-content-hash = "ad6457f0eeb1bea9f924c0dac6d044993bc5394e4a148c0d742d61f5477e7ace"
+content-hash = "9237ad951ef640bc050a525dd91c40c47858e3ab1358ca9ae0c986380fb8db3e"
 python-versions = "^3.8"
 
 [metadata.files]
@@ -269,6 +288,9 @@ aiohttp = [
     {file = "aiohttp-3.7.3-cp39-cp39-win_amd64.whl", hash = "sha256:e1b95972a0ae3f248a899cdbac92ba2e01d731225f566569311043ce2226f5e7"},
     {file = "aiohttp-3.7.3.tar.gz", hash = "sha256:9c1a81af067e72261c9cbe33ea792893e83bc6aa987bfbd6fdc1e5e7b22777c4"},
 ]
+antiorm = [
+    {file = "antiorm-1.2.1.tar.gz", hash = "sha256:96eb1841ce5163db4cf1dc13f4499ec2d7cffc190cf724b78ffdd3e6b7c4ff93"},
+]
 async-timeout = [
     {file = "async-timeout-3.0.1.tar.gz", hash = "sha256:0c3c816a028d47f659d6ff5c745cb2acf1f966da1fe5c19c77a70282b25f4c5f"},
     {file = "async_timeout-3.0.1-py3-none-any.whl", hash = "sha256:4291ca197d287d274d0b6cb5d6f8f8f82d434ed288f962539ff18cc9012f9ea3"},
@@ -292,6 +314,9 @@ colorama = [
 console = [
     {file = "console-0.9905-py2.py3-none-any.whl", hash = "sha256:39306183af3ea13679b8421bf0071acf18d37eeb60dbca283103f99de052c194"},
     {file = "console-0.9905.tar.gz", hash = "sha256:3cd06b06ca021a348130515e226293222642a3753934fbf66caf1188b6116b50"},
+]
+db = [
+    {file = "db-0.1.1.tar.gz", hash = "sha256:980e772f15c1161d3b287ffec4f144e40961b0b3e6d5102809577870bf6c5808"},
 ]
 discord = [
     {file = "discord-1.0.1-py3-none-any.whl", hash = "sha256:9d4debb4a37845543bd4b92cb195bc53a302797333e768e70344222857ff1559"},

@@ -2,7 +2,7 @@ import discord
 import os
 
 from keep_alive import keep_alive
-from event_handler import create_event, set_times, set_desc, check_zeus
+from event_handler import create_event, set_times, set_desc, check_zeus, set_team, rm_team
 
 client = discord.Client()
 
@@ -28,23 +28,44 @@ async def on_message(message):
 
   if msg.startswith('!set_times'):
     params = msg.split(' ')
-    message = await client.get_channel(message.channel.id).fetch_message(params[1])
-    embed = message.embeds[0]
+    old_message = await client.get_channel(message.channel.id).fetch_message(params[1])
+    embed = old_message.embeds[0]
     if not check_zeus(embed, message.author.name):
       await message.channel.send("Nie si Zeus!")
       return
     new_embed = set_times(embed, params[2], params[3])
-    await message.edit(embed=new_embed)
+    await old_message.edit(embed=new_embed)
 
   if msg.startswith('!set_desc'):
     params = msg.split(' ')
-    message = await client.get_channel(message.channel.id).fetch_message(params[1])
-    embed = message.embeds[0]
+    old_message = await client.get_channel(message.channel.id).fetch_message(params[1])
+    embed = old_message.embeds[0]
     if not check_zeus(embed, message.author.name):
       await message.channel.send("Nie si Zeus!")
       return
     new_embed = set_desc(embed, params[2])
-    await message.edit(embed=new_embed)
+    await old_message.edit(embed=new_embed)
+
+  if msg.startswith('!set_team'):
+    params = msg.split(' ')
+    old_message = await client.get_channel(message.channel.id).fetch_message(params[1])
+    embed = old_message.embeds[0]
+    if not check_zeus(embed, message.author.name):
+      await message.channel.send("Nie si Zeus!")
+      return
+    new_embed = set_team(embed, params[2], params[3], params[4])
+    await old_message.edit(embed=new_embed)
+
+  if msg.startswith('!rm_team'):
+    params = msg.split(' ')
+    old_message = await client.get_channel(message.channel.id).fetch_message(params[1])
+    embed = old_message.embeds[0]
+    if not check_zeus(embed, message.author.name):
+      await message.channel.send("Nie si Zeus!")
+      return
+    new_embed = rm_team(embed, params[2])
+    await old_message.edit(embed=new_embed)
+
 
 keep_alive()
 client.run(os.getenv('TOKEN'))
